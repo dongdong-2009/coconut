@@ -1,0 +1,49 @@
+diff -uNr RT55-35-28-53_AP_V2.7.1.1_20121113/config.mk RT55-35-28-53_AP_V2.7.1.1_20121113_ATMEL/config.mk
+--- RT55-35-28-53_AP_V2.7.1.1_20121113/config.mk	2012-11-13 15:54:22.000000000 +0800
++++ RT55-35-28-53_AP_V2.7.1.1_20121113_ATMEL/config.mk	2014-12-09 15:28:42.989847462 +0800
+@@ -886,6 +886,10 @@
+     endif
+ endif
+ 
++ifeq ($(PLATFORM),HISI)
++	EXTRA_CFLAGS := $(WFLAGS) -I$(RT28xx_DIR)/include
++endif
++
+ ifeq ($(PLATFORM),INTELP6)
+ 	EXTRA_CFLAGS := $(WFLAGS) -I$(RT28xx_DIR)/include
+ endif
+diff -uNr RT55-35-28-53_AP_V2.7.1.1_20121113/Makefile.inc RT55-35-28-53_AP_V2.7.1.1_20121113_ATMEL/Makefile.inc
+--- RT55-35-28-53_AP_V2.7.1.1_20121113/Makefile.inc	2012-11-13 16:18:30.000000000 +0800
++++ RT55-35-28-53_AP_V2.7.1.1_20121113_ATMEL/Makefile.inc	2014-12-09 15:29:12.475808099 +0800
+@@ -10,9 +10,11 @@
+ 
+ ifeq ($(CHIPSET),)
+ CHIPSET = 5572 3572 2870 3573 5372
++CHIPSET = 5572 3070
+ endif
+ 
+ MODULE = $(word 1, $(CHIPSET))
++MODULE = 55
+ 
+ #OS ABL - YES or NO
+ OSABL = YES
+@@ -28,6 +30,7 @@
+ 
+ #PLATFORM: Target platform
+ PLATFORM = PC
++PLATFORM = HISI
+ #PLATFORM = 5VT
+ #PLATFORM = IKANOS_V160
+ #PLATFORM = IKANOS_V180
+@@ -197,6 +200,11 @@
+ CROSS_COMPILE = 
+ endif
+ 
++ifeq ($(PLATFORM),HISI)
++LINUX_SRC = /.100G/.KEWELL/coconut/kernel/linux-2.6.22
++CROSS_COMPILE = arm-linux-
++endif
++
+ ifeq ($(PLATFORM),INTELP6)
+ LINUX_SRC = /tftpboot/IntelCE-20.0.11052.243193/project_build_i686/IntelCE/kernel-20.0.11024.238456/linux-2.6.35
+ CROSS_COMPILE = /tftpboot/IntelCE-20.0.11052.243193/build_i686/i686-linux-elf/bin/i686-cm-linux-

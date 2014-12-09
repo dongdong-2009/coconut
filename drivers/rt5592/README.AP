@@ -1,0 +1,22 @@
+
+[root@localhost drivers]#
+[root@localhost drivers]# ll
+-rw-r--r--. 1 root root    1565 Nov  6 14:21 HISI_CROSS_COMPILE.patch
+-rw-r--r--. 1 root root  896992 Nov  6 14:09 RT55-35-28-53_AP_V2.7.1.1_20121113.tar.xz
+[root@localhost drivers]#
+[root@localhost drivers]#
+[root@localhost drivers]# tar xJf RT55-35-28-53_AP_V2.7.1.1_20121113.tar.xz
+[root@localhost drivers]#
+[root@localhost drivers]# cd RT55-35-28-53_AP_V2.7.1.1_20121113
+[root@localhost RT55-35-28-53_AP_V2.7.1.1_20121113]# patch -p1 < ../HISI_CROSS_COMPILE_AP.patch 
+patching file config.mk
+patching file Makefile.inc
+[root@localhost RT55-35-28-53_AP_V2.7.1.1_20121113]# make
+......
+......
+......
+[root@localhost RT55-35-28-53_AP_V2.7.1.1_20121113]# find -type f -name  "*.ko"   
+./UTIL/os/linux/rtutil55ap.ko
+./MODULE/os/linux/rt55ap.ko
+./NETIF/os/linux/rtnet55ap.ko
+[root@localhost RT55-35-28-53_AP_V2.7.1.1_20121113]# 

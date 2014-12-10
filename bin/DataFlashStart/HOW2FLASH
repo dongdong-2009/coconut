@@ -1,0 +1,18 @@
+set bootargs 'loglevel=7 console=ttyS0,115200 initrd=0x21100000,5242880 root=/dev/ram0 rw time'
+set bootcmd 'cp.b 0xD0042000 0x20000000 0x160000;cp.b 0xD0252000 0x21100000 0x140000;bootm 20000000'
+
+tftp 20000000 0;tftp 21100000 1;bootm 20000000
+
+16K  Area 0: D0000000 to D00041FF (RO) Bootstrap
+16K  Area 1: D0004200 to D00083FF      Environment
+231K Area 2: D0008400 to D0041FFF (RO) U-Boot
+2M   Area 3: D0042000 to D0251FFF      Kernel
+1.8M Area 4: D0252000 to D041FFFF      FS
+
+tftp 20000000 0
+erase D0042000 D0251FFF
+cp.b 20000000 D0042000 $(filesize)
+
+tftp 21100000 1
+erase D0252000 D041FFFF
+cp.b 21100000 D0252000 $(filesize)

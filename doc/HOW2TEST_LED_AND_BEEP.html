@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>/.100G/.KEWELL/coconut/doc/HOW2TEST_LED_AND_BEEP.c.html</title>
+<meta name="Generator" content="Vim/7.2" />
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+<!--
+.Constant { color: #ffff00; }
+pre { font-family: monospace; color: #ffffff; background-color: #000000; }
+body { font-family: monospace; color: #ffffff; background-color: #000000; }
+.Comment { color: #00ffff; }
+-->
+</style>
+</head>
+<body>
+<pre>
+<span class="Comment">/*</span><span class="Comment">********************************************************************************</span>
+<span class="Comment"> *      Copyright:  (C) 2014 KEWELL</span>
+<span class="Comment"> *</span>
+<span class="Comment"> *       Filename:  HOW2TEST_LED_AND_BEEP.c</span>
+<span class="Comment"> *    Description:  This file </span>
+<span class="Comment"> *                 </span>
+<span class="Comment"> *        Version:  1.0.0(12/10/2014~)</span>
+<span class="Comment"> *         Author:  KEWELL &lt;EMBLINUXEDU@163.COM&gt;</span>
+<span class="Comment"> *      ChangeLog:  1, Release initial version on &quot;12/10/2014 11:56:53 AM&quot;</span>
+<span class="Comment"> *                  2,</span>
+<span class="Comment"> *                 </span>
+<span class="Comment"> * This program is free software; you can redistribute it and/or modify</span>
+<span class="Comment"> * it under the terms of the GNU General Public License version 2 as</span>
+<span class="Comment"> * published by the Free Software Foundation.</span>
+<span class="Comment"> *</span>
+<span class="Comment"> *******************************************************************************</span><span class="Comment">*/</span>
+
+/usr/drivers &gt;:
+/usr/drivers &gt;:
+/usr/drivers &gt;: insmod L350BeepDrv.ko    ########################测试LED的驱动 ###################################
+[  <span class="Constant">235.010000</span>] Beep driver registered
+/usr/drivers &gt;:
+/usr/drivers &gt;: comport -ioctl /dev/beep <span class="Constant">15</span> <span class="Constant">0</span>
+ioctl (/dev/beep, <span class="Constant">15</span>, <span class="Constant">0</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/beep <span class="Constant">16</span> <span class="Constant">0</span>
+ioctl (/dev/beep, <span class="Constant">16</span>, <span class="Constant">0</span>) returned <span class="Constant">0</span>
+
+/usr/drivers &gt;:
+/usr/drivers &gt;:
+/usr/drivers &gt;: insmod L350LedDrv.ko ########################测试蜂鸣器的驱动 ###################################
+/usr/drivers &gt;:
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">0</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">0</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">1</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">1</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">2</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">2</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">3</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">3</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">4</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">4</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">5</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">5</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">6</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">6</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">1</span> <span class="Constant">7</span>
+ioctl (/dev/led, <span class="Constant">1</span>, <span class="Constant">7</span>) returned <span class="Constant">0</span>
+
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">0</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">0</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">1</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">1</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">2</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">2</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">3</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">3</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">4</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">4</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">5</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">5</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">6</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">6</span>) returned <span class="Constant">0</span>
+/usr/drivers &gt;: comport -ioctl /dev/led <span class="Constant">0</span> <span class="Constant">7</span>
+ioctl (/dev/led, <span class="Constant">0</span>, <span class="Constant">7</span>) returned <span class="Constant">0</span>
+
+</pre>
+</body>
+</html>

@@ -2,15 +2,15 @@ obj-m := L350BeepDrv.o
 obj-m += L350LedDrv.o
 obj-m += L350ModemDrv.o
 obj-m += L350Rs485Drv.o
-obj-m += L350GTM900Drv.o
-obj-m += uc864e_usb.o
+#obj-m += L350GTM900Drv.o
+#obj-m += uc864e_usb.o
 
 ARCH = arm
 KERNEL_VER := linux-2.6.22
 CROSS_COMPILE := arm-linux-
 PWD := $(shell pwd)
 
-LINUX_SRC := /root/$(KERNEL_VER)/
+LINUX_SRC := /.100G/.KEWELL/coconut/kernel/$(KERNEL_VER)/
 MODULES_PATH := ./$(KERNEL_VER)/
 
 all: howto clean modules

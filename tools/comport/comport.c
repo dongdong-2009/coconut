@@ -355,6 +355,7 @@ int main (int argc, char *argv [])
 			}
 
 			comport_send (&stComPort, aucBuf, 1);
+            printf("S__D\n");
 		}
 		else if (0x00 != g_ucCtrlZ)
 		{
@@ -362,6 +363,7 @@ int main (int argc, char *argv [])
 			
 			aucBuf [0] = 0x1A;
 			comport_send (&stComPort, aucBuf, 1);
+            printf("S__D\n");
 		}
 	}
 	
